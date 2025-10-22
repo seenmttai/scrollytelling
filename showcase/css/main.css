@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap');
+
+:root {
+  --color-background: #0d0d0d;
+  --color-text-primary: #e6e6e6;
+  --color-text-secondary: #a8a8a8;
+  --color-accent: #4a90e2;
+  --font-family-sans: 'Onest', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --container-width: 900px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: 4rem;
+  color: var(--color-accent);
+}
+
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  max-width: 60ch;
+  margin-bottom: 1rem;
+  color: var(--color-text-secondary);
+}
+
+.header, .footer {
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+.scroll-section {
+  position: relative;
+  width: 100%;
+  height: 300vh;
+  display: flex;
+  justify-content: center;
+}
+
+.pin-container {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  max-width: var(--container-width);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.chapter-intro {
+  position: absolute;
+  opacity: 0;
+}
+
+.chapter-asset {
+  width: 80%;
+  max-width: 600px;
+  stroke: var(--color-text-secondary);
+}
+
+.chapter-1-asset { opacity: 0; }
+.chapter-2-asset { opacity: 0; transform: scale(0.5); }
+.chapter-3-asset { transform: translateY(100vh); max-width: 250px; }
+.chapter-4-asset { transform: scale(0.5); opacity: 0; }
+
+/* Chapter 5: Horizontal Scroll */
+.horizontal-section {
+    height: 400vh;
+}
+.pin-container-horizontal {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+.horizontal-track {
+    width: 300%;
+    height: 100%;
+    display: flex;
+}
+.horizontal-panel {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    text-align: center;
+}
+.chapter-5-asset {
+    max-width: 400px;
+    opacity: 0.5;
+}
+
+/* Chapter 6: The Web */
+#chapter-6 .pin-container {
+    justify-content: flex-start;
+    padding-top: 10vh;
+}
+.chapter-6-content {
+    position: relative;
+    width: 100%;
+    height: 80%;
+}
+#chapter-6-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+.stagger-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+.stagger-item {
+    background-color: var(--color-accent);
+    opacity: 0;
+}
+
+
+.footer {
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}

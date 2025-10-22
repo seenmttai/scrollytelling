@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" fill="none" stroke-width="2" stroke="currentColor">
+    <rect width="798" height="398" x="1" y="1" stroke-opacity="0.2"/>
+    <path d="M100 100h600v200h-600z" stroke-opacity="0.2"/>
+    <circle cx="400" cy="200" r="50" stroke-opacity="0.5"/>
+    <text x="400" y="210" font-family="monospace" font-size="20" fill="currentColor" text-anchor="middle" stroke="none">ENIAC</text>
+</svg>
