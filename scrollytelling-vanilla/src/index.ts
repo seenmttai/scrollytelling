@@ -86,7 +86,7 @@ class ScrollytellingInstance {
     return { duration, position };
   }
 
-  addAnimation(params: {target: string | HTMLElement | (string | HTMLElement)[], tween: Tween}) {
+  addAnimation(params: {target: string | HTMLElement | (string | HTMLElement)[], tween: Tween | Tween[]}) {
     const { target, tween } = params;
 
     const elements = Array.isArray(target)
@@ -98,18 +98,22 @@ class ScrollytellingInstance {
       return;
     }
 
-    const { duration, position } = this.getTimelineSpace(tween);
-    const options = { duration };
+    const tweens = Array.isArray(tween) ? tween : [tween];
 
-    if ("to" in tween) {
-      this.timeline.to(elements, { ...tween.to, ...options }, position);
-    } else if ("from" in tween) {
-      this.timeline.from(elements, { ...tween.from, ...options }, position);
-    } else if ("fromTo" in tween) {
-      this.timeline.fromTo(elements, tween.fromTo[0], { ...tween.fromTo[1], ...options }, position);
-    } else {
-      throw new Error("Invalid tween type. Must be 'to', 'from', or 'fromTo'.")
-    }
+    tweens.forEach(t => {
+      const { duration, position } = this.getTimelineSpace(t);
+      const options = { duration };
+
+      if ("to" in t) {
+        this.timeline.to(elements, { ...t.to, ...options }, position);
+      } else if ("from" in t) {
+        this.timeline.from(elements, { ...t.from, ...options }, position);
+      } else if ("fromTo" in t) {
+        this.timeline.fromTo(elements, t.fromTo[0], { ...t.fromTo[1], ...options }, position);
+      } else {
+        throw new Error("Invalid tween type. Must be 'to', 'from', or 'fromTo'.")
+      }
+    });
   }
 
   addParallax(params: { target: string | HTMLElement, tween: ParallaxTween }) {
@@ -242,7 +246,7 @@ class ScrollytellingInstance {
   }
 }
 
-export const Scrollytelling = {
+export default {
   create: (options: ScrollytellingOptions) => {
     return new ScrollytellingInstance(options);
   },
